@@ -1,8 +1,8 @@
-Simple REST API server
-(SpringBoot + MySql + JPA)
+mongodb 연동 테스트
 
-서버 구동 시 테이블을 자동 생성하므로,
-application.properties만 수정해주시면 동작합니다.
+http://localhost:8080/health
+http://localhost:8080/
+http://localhost:8080/users
 
 
 실행 : mvn spring-boot:run
