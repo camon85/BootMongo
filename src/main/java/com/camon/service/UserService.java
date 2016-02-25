@@ -24,6 +24,12 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public List<User> save(List<User> users) {
+        users.forEach(this::save);
+
+        return users;
+    }
+
     public List<User> findByLastname(String lastname) {
         return userRepository.findByLastname(lastname);
     }

@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by jooyong on 2016-02-25.
@@ -33,4 +35,23 @@ public class UserController {
         return userService.findByLastname(lastname);
     }
 
+
+    @RequestMapping(value = "/dummy", method = RequestMethod.GET)
+    public int dummy(@RequestParam(defaultValue = "100") int count) {
+        List<User> users = new ArrayList<>();
+
+        int i = 0;
+        for ( ; i < count; i++) {
+            User user = new User();
+            String uuid = UUID.randomUUID().toString();
+            user.setFirstname(uuid);
+            user.setLastname(uuid);
+
+            users.add(user);
+        }
+
+        userService.save(users);
+
+        return users.size();
+    }
 }
